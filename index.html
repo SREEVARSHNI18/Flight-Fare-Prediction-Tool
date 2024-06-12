@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #e91e63;
+        }
+        .input-field {
+            margin: 10px 0;
+        }
+        .input-field input {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+        }
+        .input-field button {
+            padding: 10px 20px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-field button:hover {
+            background-color: #d81b60;
+        }
+        .flight-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Fare Predictor</h1>
+        <img src="{{ url_for('static', filename='flight.jpeg') }}" alt="Flight Image" class="flight-image">
+        <div class="input-field">
+            <input type="text" id="source" placeholder="Source">
+        </div>
+        <div class="input-field">
+            <input type="text" id="destination" placeholder="Destination">
+        </div>
+        <div class="input-field">
+            <input type="date" id="start-date" placeholder="Start Date">
+        </div>
+        <div class="input-field">
+            <input type="date" id="end-date" placeholder="End Date">
+        </div>
+        <div class="input-field">
+            <button onclick="searchFlight()">Search</button>
+        </div>
+    </div>
+
+    <script>
+        function searchFlight() {
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            window.location.href = `/result?source=${source}&destination=${destination}&start_date=${startDate}&end_date=${endDate}`;
+        }
+    </script>
+</body>
+</html>
